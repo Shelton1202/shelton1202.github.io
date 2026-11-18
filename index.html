@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="style.css?v=20260612-exp">
+    <link rel="stylesheet" href="style.css?v=20261118-pub2">
 </head>
 <body>
 
@@ -44,7 +44,7 @@
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/xintong-wang-796617225/" target="_blank">[LinkedIn]</a> 
                         <a href="https://www.kaggle.com/wangxintong111" target="_blank">[Kaggle]</a> 
-                        <a href="https://github.com/JAsonT1202" target="_blank">[GitHub]</a>
+                        <a href="https://github.com/Shelton1202" target="_blank">[GitHub]</a>
                     </div>
                 </div>
             </div>
@@ -227,51 +227,81 @@
         </div>
     </div>
 
-    <div class="container nav-section">
-        <div class="tabs-row">
-            <button class="tab-btn active" onclick="filter('all')">
-                <span class="lang-en">All</span><span class="lang-ja">すべて</span>
-            </button>
-            <button class="tab-btn" onclick="filter('pub')">
-                <span class="lang-en">Publications</span><span class="lang-ja">論文</span>
-            </button>
-            <button class="tab-btn" onclick="filter('proj')">
-                <span class="lang-en">Projects & Experience</span><span class="lang-ja">プロジェクト・経歴</span>
-            </button>
-        </div>
-    </div>
+    <section class="container pub-section">
+        <h3 class="pub-section-title">
+            <span class="lang-en">Publications</span><span class="lang-ja">論文</span>
+        </h3>
 
-    <div class="container content-list">
-        <div class="paper-item category-pub">
-            <div class="paper-img">
-                <img src="images/dp-let.png" alt="DP-LET" onerror="this.src='https://via.placeholder.com/220x120?text=Paper+Image'">
+        <article class="pub">
+            <div class="pub-badge-col">
+                <span class="pub-badge badge-ws">AIoT Workshop</span>
+                <span class="pub-year">2026</span>
             </div>
-            <div class="paper-info">
-                <a href="https://doi.org/10.1109/GLOBECOM59602.2025.11432477" target="_blank" class="paper-title">
-                    DP-LET: An Efficient Spatio-Temporal Network Traffic Prediction Framework
-                </a>
-                <p class="authors">
-                    <strong>Xintong Wang</strong>, Haihan Nan, Ruidong Li, Huaming Wu
+            <div class="pub-body">
+                <a href="https://arxiv.org/abs/2611.17680" target="_blank" class="pub-title">Aligned, Conflicting, or Unspecified? A Diagnostic Benchmark for Multimodal Time Series Forecasting</a>
+                <div class="pub-authors"><span class="pub-me">Xintong Wang</span>, Haihan Nan, Ruidong Li</div>
+                <div class="pub-venue">IEEE AIoT 2026 Workshop</div>
+                <p class="pub-tldr">
+                    <span class="lang-en">A real-world diagnostic benchmark of 1,762 text–window pairs (weather, web traffic, finance), labeled by whether the text is aligned with, conflicts with, or does not specify the historical trend.</span>
+                    <span class="lang-ja">気象・Webトラフィック・金融の実データから、テキストが過去のトレンドと一致／矛盾／無関係かでラベル付けした1,762組のテキスト–時系列ペアによる診断ベンチマーク。</span>
                 </p>
-                <p class="venue">IEEE Global Communications Conference (GLOBECOM), 2025</p>
-
-                <p class="desc">
-                    <span class="lang-en">Proposed an efficient spatio-temporal network traffic forecasting framework; accepted at IEEE GLOBECOM 2025. Includes paper, DOI, and presentation slides.</span>
-                    <span class="lang-ja">効率的な時空間ネットワークトラフィック予測フレームワークを提案し、IEEE GLOBECOM 2025 に採択。論文、DOI、発表スライドを公開。</span>
-                </p>
-
-                <div style="margin-top:8px;font-size:14px;">
-                    <a href="https://arxiv.org/pdf/2504.03792" target="_blank">[PDF]</a>
-                    <a href="https://doi.org/10.1109/GLOBECOM59602.2025.11432477" target="_blank">[DOI]</a>
-                    <a href="pdf/globecom2025_v2.pdf" target="_blank">[Presentation Slides]</a>
+                <div class="pub-links">
+                    <a class="pub-btn" href="https://arxiv.org/pdf/2611.17680" target="_blank">PDF</a>
+                    <a class="pub-btn" href="https://arxiv.org/abs/2611.17680" target="_blank">arXiv</a>
+                    <button type="button" class="pub-btn" onclick="toggleBib(this)">BibTeX</button>
                 </div>
+                <div class="pub-bib" hidden>
+                    <button type="button" class="pub-bib-copy" onclick="copyBib(this)">Copy</button>
+<pre>@article{wang2026aligned,
+  title   = {Aligned, Conflicting, or Unspecified? A Diagnostic Benchmark for Multimodal Time Series Forecasting},
+  author  = {Wang, Xintong and Nan, Haihan and Li, Ruidong},
+  journal = {arXiv preprint arXiv:2611.17680},
+  year    = {2026}
+}</pre>
+                </div>
+                <a class="pub-fig" href="images/aiot2026.png" target="_blank">
+                    <img src="images/aiot2026.png" alt="Overview of the aligned / conflicting / unspecified benchmark" loading="lazy">
+                </a>
             </div>
-        </div>
+        </article>
 
+        <article class="pub">
+            <div class="pub-badge-col">
+                <span class="pub-badge badge-conf">GLOBECOM</span>
+                <span class="pub-year">2025</span>
+            </div>
+            <div class="pub-body">
+                <a href="https://doi.org/10.1109/GLOBECOM59602.2025.11432477" target="_blank" class="pub-title">DP-LET: An Efficient Spatio-Temporal Network Traffic Prediction Framework</a>
+                <div class="pub-authors"><span class="pub-me">Xintong Wang</span>, Haihan Nan, Ruidong Li, Huaming Wu</div>
+                <div class="pub-venue">IEEE Global Communications Conference (GLOBECOM), 2025</div>
+                <p class="pub-tldr">
+                    <span class="lang-en">Proposed an efficient spatio-temporal network traffic forecasting framework.</span>
+                    <span class="lang-ja">効率的な時空間ネットワークトラフィック予測フレームワークを提案。</span>
+                </p>
+                <div class="pub-links">
+                    <a class="pub-btn" href="https://arxiv.org/pdf/2504.03792" target="_blank">PDF</a>
+                    <a class="pub-btn" href="https://arxiv.org/abs/2504.03792" target="_blank">arXiv</a>
+                    <a class="pub-btn" href="https://doi.org/10.1109/GLOBECOM59602.2025.11432477" target="_blank">DOI</a>
+                    <a class="pub-btn" href="pdf/globecom2025_v2.pdf" target="_blank">Slides</a>
+                    <button type="button" class="pub-btn" onclick="toggleBib(this)">BibTeX</button>
+                </div>
+                <div class="pub-bib" hidden>
+                    <button type="button" class="pub-bib-copy" onclick="copyBib(this)">Copy</button>
+<pre>@inproceedings{wang2025dplet,
+  title     = {DP-LET: An Efficient Spatio-Temporal Network Traffic Prediction Framework},
+  author    = {Wang, Xintong and Nan, Haihan and Li, Ruidong and Wu, Huaming},
+  booktitle = {IEEE Global Communications Conference (GLOBECOM)},
+  year      = {2025},
+  doi       = {10.1109/GLOBECOM59602.2025.11432477}
+}</pre>
+                </div>
+                <a class="pub-fig" href="images/dp-let.png" target="_blank">
+                    <img src="images/dp-let.png" alt="DP-LET framework overview" loading="lazy">
+                </a>
+            </div>
+        </article>
+    </section>
 
-
-    </div>
-
-    <script src="script.js"></script>
+    <script src="script.js?v=20261118"></script>
 </body>
 </html>

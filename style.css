@@ -271,67 +271,121 @@ a:hover { text-decoration: underline; }
 }
 
 
-/* ================= 导航栏 (Tabs) ================= */
-.nav-section {
-    margin-bottom: 30px;
-    border-bottom: 1px solid #ddd;
-    background-color: #f4f4f4;
-}
-.tabs-row { 
-    display: flex; 
-    flex-wrap: wrap; /* 允许手机端换行 */
-}
-.tab-btn {
-    border: none; background: none;
-    padding: 12px 25px;
-    font-size: 14px; 
-    font-weight: bold; color: #666;
-    cursor: pointer;
-    font-family: inherit;
-}
-.tab-btn:hover { color: #000; background: #e0e0e0; }
-.tab-btn.active {
-    background-color: #2196F3;
-    color: white;
+/* ================= Publications ================= */
+.pub-section { margin-bottom: 40px; }
+.pub-section-title {
+    font-size: 22px;
+    margin: 0 0 8px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #eee;
 }
 
-
-/* ================= 内容列表 (Paper Item) ================= */
-.paper-item {
-    display: flex;
-    gap: 25px;
-    margin-bottom: 40px;
-    padding-bottom: 20px;
+.pub {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 24px;
+    padding: 26px 0;
     border-bottom: 1px solid #f0f0f0;
 }
+.pub:last-child { border-bottom: none; }
 
-.paper-img { flex: 0 0 220px; }
-.paper-img img, .placeholder-img {
-    width: 100%;
-    border: 1px solid #eee;
-    box-shadow: 2px 2px 6px rgba(0,0,0,0.08);
+/* 左侧：会议徽章 + 年份 */
+.pub-badge-col {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
+    padding-top: 3px;
 }
-.placeholder-img {
-    height: 120px; background: #eee;
-    display: flex; align-items: center; justify-content: center;
-    color: #888; font-weight: bold;
+.pub-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: #fff;
+    white-space: nowrap;
 }
+.badge-conf { background: #0066cc; }
+.badge-ws   { background: #2e8b57; }
+.pub-year { font-size: 13px; color: #888; padding-left: 2px; }
 
-.paper-info { flex: 1; min-width: 0; /* 防止Flex子元素溢出 */ }
-.paper-title {
-    font-size: 17px; 
-    font-weight: bold; color: #000;
-    display: block; margin-bottom: 6px;
+/* 右侧：论文信息 */
+.pub-title {
+    display: block;
+    font-size: 17px;
+    font-weight: 700;
     line-height: 1.4;
+    color: #111;
+    margin-bottom: 6px;
 }
-.authors { color: #444; font-size: 14px; margin: 4px 0; }
-.venue { font-style: italic; color: #0066cc; margin-bottom: 8px; font-size: 14px; }
-.desc {
-    font-size: 13.5px;
-    color: #555;
-    margin-top: 8px;
-    text-align: justify;
+.pub-title:hover { color: #0066cc; text-decoration: none; }
+.pub-authors { font-size: 14.5px; color: #444; margin-bottom: 2px; }
+.pub-me { font-weight: 700; color: #111; border-bottom: 1px solid #111; }
+.pub-venue { font-size: 14px; font-style: italic; color: #666; }
+.pub-tldr { font-size: 14px; color: #555; margin: 8px 0 0 0; line-height: 1.6; }
+
+.pub-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.pub-btn {
+    display: inline-block;
+    padding: 2px 12px;
+    font-size: 12.5px;
+    font-family: inherit;
+    line-height: 1.7;
+    color: #333;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.15s ease;
 }
+.pub-btn:hover, .pub-btn.active {
+    color: #fff;
+    background: #0066cc;
+    border-color: #0066cc;
+    text-decoration: none;
+}
+
+.pub-bib {
+    position: relative;
+    margin-top: 12px;
+    background: #f7f7f9;
+    border: 1px solid #e3e3e8;
+    border-radius: 4px;
+}
+.pub-bib[hidden] { display: none; }
+.pub-bib pre {
+    margin: 0;
+    padding: 12px 14px;
+    font-size: 12px;
+    line-height: 1.5;
+    overflow-x: auto;
+    color: #333;
+}
+.pub-bib-copy {
+    position: absolute;
+    top: 6px; right: 6px;
+    font-size: 11px;
+    font-family: inherit;
+    padding: 1px 8px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background: #fff;
+    cursor: pointer;
+}
+
+.pub-fig { display: block; margin-top: 16px; cursor: zoom-in; }
+.pub-fig img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    transition: box-shadow 0.2s ease;
+}
+.pub-fig:hover img { box-shadow: 0 4px 16px rgba(0,0,0,0.12); }
 
 /* =========================================================
    📱 手机端自适应 (Media Queries) - 核心修改部分
@@ -371,28 +425,14 @@ a:hover { text-decoration: underline; }
         justify-content: center;
     }
 
-    /* 3. 论文/项目列表变为垂直堆叠 (图在上, 文在下) */
-    .paper-item {
-        flex-direction: column;
-        gap: 15px;
+    /* 3. 论文列表：徽章移到标题上方，单列排列 */
+    .pub {
+        grid-template-columns: 1fr;
+        gap: 10px;
+        padding: 20px 0;
     }
-
-    .paper-img {
-        flex: 0 0 auto;
-        width: 100%;
-        max-width: 300px; /* 图片限制最大宽度 */
-        margin: 0 auto;   /* 图片居中 */
-    }
-
-    .paper-info {
-        width: 100%;
-    }
-
-    /* 4. 调整导航按钮，防止挤在一起 */
-    .tab-btn {
-        flex: 1; /* 平均分配宽度 */
-        text-align: center;
-        padding: 10px 5px;
-        font-size: 13px;
+    .pub-badge-col {
+        flex-direction: row;
+        align-items: center;
     }
 }

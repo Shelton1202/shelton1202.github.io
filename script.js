@@ -33,22 +33,17 @@ function setLang(lang) {
     }
 }
 
-// 2. 筛选逻辑 (保持不变)
-function filter(category) {
-    let btns = document.querySelectorAll('.tab-btn');
-    btns.forEach(btn => btn.classList.remove('active'));
-    event.currentTarget.classList.add('active'); // 使用 currentTarget 修复点击 span 不变色的问题
-    
-    let items = document.querySelectorAll('.paper-item');
-    items.forEach(item => {
-        if (category === 'all') {
-            item.style.display = 'flex';
-        } else {
-            if (item.classList.contains('category-' + category)) {
-                item.style.display = 'flex';
-            } else {
-                item.style.display = 'none';
-            }
-        }
+// 2. 论文 BibTeX 展开 / 复制
+function toggleBib(btn) {
+    let bib = btn.closest('.pub-body').querySelector('.pub-bib');
+    bib.hidden = !bib.hidden;
+    btn.classList.toggle('active', !bib.hidden);
+}
+
+function copyBib(btn) {
+    let text = btn.parentElement.querySelector('pre').innerText;
+    navigator.clipboard.writeText(text).then(() => {
+        btn.innerText = 'Copied!';
+        setTimeout(() => { btn.innerText = 'Copy'; }, 1500);
     });
 }
